@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/header') %>
+  <title>Edit Blog</title>
+</head>
+<body style="background-color: #1f242d; color: #fff;">
+  <%- include('./partials/nav') %>
+
+  <div class="container mt-4">
+    <h2 class="text-info mb-4">Edit Blog</h2>
+    <form action="/blog/edit/<%= blog._id %>" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" value="<%= blog.title %>" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Content</label>
+        <textarea name="content" rows="6" class="form-control" required><%= blog.content %></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Change Cover Image (optional)</label>
+        <input type="file" name="coverImage" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Blog</button>
+    </form>
+  </div>
+
+  <%- include('./partials/footer') %>
+  <%- include('./partials/scripts') %>
+</body>
+</html>

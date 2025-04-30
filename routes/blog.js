@@ -72,4 +72,37 @@ router.post("/comment/:blogId", async (req, res) => {
   }
 });
 
+router.get('/edit/:id', async (req, res) => {
+  const blog = await Blog.findById(req.params.id);
+  if (!blog) return res.status(404).send('Blog not found');
+
+  // Only author can access
+  if (blog.createdBy.toString() !== req.user._id.toString()) {
+    return res.status(403).send('Unauthorized');
+  }
+
+  res.render('editBlog', { blog });
+});
+
+// POST Update Blog
+router.post('/edit/:id', upload.single('coverImage'), async (req, res) => {
+  const blog = await Blog.findById(req.params.id);
+  if (!blog) return res.status(404).send('Blog not found');
+
+  if (blog.createdBy.toString() !== req.user._id.toString()) {
+    return res.status(403).send('Unauthorized');
+  }
+
+  blog.title = req.body.title;
+  blog.content = req.body.content;
+  if (req.file) {
+    blog.coverImageURL =req.file.path;
+  }
+
+  await blog.save();
+  res.redirect(`/blog/${blog._id}`);
+});
+
+
+
 module.exports = router;

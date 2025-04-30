@@ -31,6 +31,14 @@
           — <%= blog.createdBy.fullName %>
         </a>
       </div>
+
+       <!-- Show Edit button only if current user is the blog author -->
+      <% if (locals.user && locals.user._id.toString() === blog.createdBy._id.toString()) { %>
+        <div class="text-end mt-3">
+          <a href="/blog/edit/<%= blog._id %>" class="btn btn-outline-info btn-sm">Edit Blog</a>
+        </div>
+      <% } %>
+
     </div>
 
     <!-- Comments Section -->
