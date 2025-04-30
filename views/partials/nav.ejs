@@ -35,8 +35,15 @@
           
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" style="border-color: #0ef;" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" style="color: #0ef;" onclick="searchContent();" type="submit">Search</button>
+          <input 
+    class="form-control me-2" 
+    style="border-color: #0ef;" 
+    type="search" 
+    placeholder="Search" 
+    aria-label="Search"
+    id="searchInput"
+    onkeyup="searchContent()"
+  >
         </form>
       </div>
     </div>
