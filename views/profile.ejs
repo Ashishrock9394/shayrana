@@ -2,57 +2,23 @@
 <html lang="en">
   <head>
     <%- include('./partials/header') %>
-    <title>Update Profile</title>
+    <title>Profile</title>
   </head>
-  <body style="background-color: #1f242d;">
+  <body style="background-color: #1f242d; color: #fff;">
     <%- include('./partials/nav') %>
 
     <div class="container mt-4">
-      <h1 class="text-white">Update Profile</h1>
-      <form action="/user/profile" method="post" enctype="multipart/form-data">
-        <div class="form-group mb-3">
-          <label for="fullName">Full Name</label>
-          <input
-            type="text"
-            name="fullName"
-            class="form-control"
-            id="fullName"
-            value="<%= user.fullName %>"
-            placeholder="Enter Your Name"
-          />
+      <h1 class="text-white mb-4">My Profile</h1>
+
+      <div class="card bg-dark text-white p-4">
+        <div class="d-flex align-items-center gap-4">
+          <img src="<%= user.profileImageURL || '/uploads/defaultProfileImage.jpg' %>" alt="Profile Image" class="rounded-circle" width="120" height="120" style="object-fit: cover;" />
+          <div>
+            <h3><%= user.fullName %></h3>
+            <p><strong>Email:</strong> <%= user.email %></p>
+          </div>
         </div>
-        <div class="form-group mb-3">
-          <label for="email">Email address</label>
-          <input
-            type="email"
-            name="email"
-            class="form-control"
-            id="email"
-            value="<%= user.email %>"
-            placeholder="Enter your email"
-          />
-        </div>
-        <div class="form-group mb-3">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            class="form-control"
-            id="password"
-            placeholder="Enter new password (Leave empty if you don't want to change)"
-          />
-        </div>
-        <div class="form-group mb-3">
-          <label for="profileImage">Profile Image</label>
-          <input
-            type="file"
-            name="profileImage"
-            class="form-control"
-            id="profileImage"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Update Profile</button>
-      </form>
+      </div>
     </div>
 
     <%- include('./partials/footer') %>
