@@ -34,17 +34,18 @@
             <%} %>
           
         </ul>
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" onsubmit="return false;">
           <input 
-    class="form-control me-2" 
-    style="border-color: #0ef;" 
-    type="search" 
-    placeholder="Search" 
-    aria-label="Search"
-    id="searchInput"
-    onkeyup="searchContent()"
-  >
-        </form>
+            class="form-control me-2" 
+            style="border-color: #0ef;" 
+            type="search" 
+            placeholder="Search" 
+            aria-label="Search"
+            id="searchInput"
+            onkeyup="searchContent()"
+          >
+          <button class="btn btn-outline-success" style="color: #0ef;">Search</button>
+        </form>        
       </div>
     </div>
   </nav>
