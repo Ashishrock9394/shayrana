@@ -25,8 +25,9 @@ router.post("/signin", async (req, res) => {
   }
 });
 
-router.get("/logout", (req, res) => {
-  res.clearCookie("token").redirect("/");
+router.get('/logout', (req, res) => {
+  res.clearCookie('token'); // assuming you're using a cookie named "token"
+  return res.redirect('/');
 });
 
 router.post("/signup", async (req, res) => {
