@@ -10,7 +10,7 @@ const blogRoute = require('./routes/blog');
 const { checkForAuthenticationCookie } = require("./middleware/authentication");
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 
 // ✅ MongoDB Atlas connection
 mongoose.connect(process.env.MONGODB_URI)
@@ -36,4 +36,5 @@ app.get("/", async (req, res) => {
 app.use("/user", userRoute);
 app.use("/blog", blogRoute);
 
-app.listen(PORT, () => console.log(`🚀 Server started at PORT: ${PORT}`));
+// Exporting the app for Vercel deployment
+module.exports = app;
