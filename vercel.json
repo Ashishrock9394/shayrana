@@ -1,8 +1,11 @@
 {
       "version": 2,
-      "env": {
-        "MONGODB_URI": "mongodb+srv://ashishkumar9394:rock274474@cluster0.amjoyah.mongodb.net/shayrana?retryWrites=true&w=majority&appName=Cluster0"
-      },
+      "builds": [
+        {
+          "src": "app.js",
+          "use": "@vercel/node"
+        }
+      ],
       "routes": [
         {
           "src": "/(.*)",
