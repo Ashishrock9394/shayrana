@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/header') %>
+    <title>Shayrana</title>
+  </head>
+  <body style="background-color: #1f242d;">
+    <%- include('./partials/nav') %>
+    <h3 class="text-center mt-3" style="color: aqua;">Welcome to Shayrana</h3>
+
+    <div class="container mt-3">
+      <div class="row mt-2">
+        <% blogs.forEach(blog => { %>
+          <div class="col-12 col-sm-6 col-md-3 mb-4">
+            <div class="card" style="background-color: #1f242d; width: 18rem; box-shadow: rgba(0, 242, 255, 0.12) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 242, 255, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 242, 255, 0.9) 0px -3px 5px;">
+              
+              <!-- Blog Image -->
+              <img src="<%= blog.coverImageURL %>" width="100%" height="250" class="card-img-top p-1 rounded" style="object-fit: cover;" />
+          
+              <div class="card-body">
+                <!-- Title -->
+                <h5 class="card-title" style="color: #0ef;"><%= blog.title %></h5>
+          
+                <!-- Content Preview -->
+                <p class="card-text text-white" id="blog-preview-<%= blog._id %>">
+                  <% if (blog.content.length > 250) { %>
+                    <%= blog.content.slice(0, 250) %>...
+                    <a href="#" class="text-info" onclick="showFullContent('<%= blog._id %>'); return false;">View more</a>
+                  <% } else { %>
+                    <%= blog.content %>
+                  <% } %>
+                </p>
+          
+                <!-- Full Content Hidden -->
+                <% if (blog.content.length > 250) { %>
+                  <p class="card-text text-white d-none" id="blog-full-<%= blog._id %>">
+                    <%= blog.content %>
+                    <a href="#" class="text-info" onclick="showLessContent('<%= blog._id %>'); return false;">View less</a>
+                  </p>
+                <% } %>
+          
+                <!-- View Full Blog -->
+                <a href="/blog/<%= blog._id %>" class="btn btn-primary mt-2">View</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    
+    <%- include('./partials/footer') %>
+    <%- include('./partials/scripts') %>
+
+    <script>
+      function showFullContent(id) {
+        document.getElementById('blog-preview-' + id).classList.add('d-none');
+        document.getElementById('blog-full-' + id).classList.remove('d-none');
+      }
+    
+      function showLessContent(id) {
+        document.getElementById('blog-full-' + id).classList.add('d-none');
+        document.getElementById('blog-preview-' + id).classList.remove('d-none');
+      }
+    </script>
+  </body>
+</html>
