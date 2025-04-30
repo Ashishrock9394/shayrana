@@ -40,7 +40,7 @@
       <!-- Comment List -->
       <div class="mb-4">
         <% comments.forEach(comment => { %>
-          <div class="d-flex align-items-start gap-3 p-3 mb-3 border rounded bg-dark">
+          <div class="d-flex align-items-start gap-3 p-3 mb-3">
             <img src="<%= comment.createdBy.profileImageURL %>" class="rounded-circle border border-light" width="40" height="40" style="object-fit: cover;" />
             <div>
               <h6 class="mb-1 text-info"><%= comment.createdBy.fullName %></h6>
