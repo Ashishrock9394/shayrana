@@ -2,11 +2,59 @@
 <html lang="en">
   <head>
     <%- include('./partials/header') %>
-    <title>Signup</title>
+    <title>Update Profile</title>
   </head>
   <body style="background-color: #1f242d;">
     <%- include('./partials/nav') %>
-    
+
+    <div class="container mt-4">
+      <h1 class="text-white">Update Profile</h1>
+      <form action="/user/profile" method="post" enctype="multipart/form-data">
+        <div class="form-group mb-3">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            name="fullName"
+            class="form-control"
+            id="fullName"
+            value="<%= user.fullName %>"
+            placeholder="Enter Your Name"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="email">Email address</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            id="email"
+            value="<%= user.email %>"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter new password (Leave empty if you don't want to change)"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="profileImage">Profile Image</label>
+          <input
+            type="file"
+            name="profileImage"
+            class="form-control"
+            id="profileImage"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+      </form>
+    </div>
+
     <%- include('./partials/footer') %>
     <%- include('./partials/scripts') %>
   </body>
