@@ -51,18 +51,22 @@ router.get('/logout', (req, res) => {
 // POST: Signup
 router.post("/signup", upload.single("profileImage"), async (req, res) => {
   const { fullName, email, password } = req.body;
+
   try {
     console.log("Signup form data:", req.body);
     console.log("Uploaded file:", req.file);
 
-    const user = await User.create({
+    // Create new user
+    await User.create({
       fullName,
       email,
       password,
       profileImageURL: req.file?.path || '',
     });
 
-    const token = user.generateJWT();
+    // Authenticate the new user
+    const token = await User.matchPasswordAndGenerateToken(email, password);
+
     return res.cookie("token", token).redirect("/");
   } catch (err) {
     console.error("Signup Error:", err);
@@ -71,6 +75,7 @@ router.post("/signup", upload.single("profileImage"), async (req, res) => {
     });
   }
 });
+
 
 // GET: Profile Page (Protected)
 router.get("/profile", requireUser, async (req, res) => {
