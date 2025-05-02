@@ -52,6 +52,9 @@ router.get('/logout', (req, res) => {
 router.post("/signup", upload.single("profileImage"), async (req, res) => {
   const { fullName, email, password } = req.body;
   try {
+    console.log("Signup form data:", req.body);
+    console.log("Uploaded file:", req.file);
+
     const user = await User.create({
       fullName,
       email,
@@ -62,8 +65,10 @@ router.post("/signup", upload.single("profileImage"), async (req, res) => {
     const token = user.generateJWT();
     return res.cookie("token", token).redirect("/");
   } catch (err) {
-    console.error(err);
-    return res.render("signup", { error: "Signup failed. Please try again." });
+    console.error("Signup Error:", err);
+    return res.render("signup", {
+      error: err.message || "Signup failed. Please try again.",
+    });
   }
 });
 
