@@ -8,17 +8,17 @@
     <%- include('./partials/nav') %>
 
     <div class="container mt-4">
-      <h1 class="text-white mb-4">My Profile</h1>
+      <h1 class="mb-4" style="color: aqua;">My Profile</h1>
 
-      <div class="card bg-dark text-white p-4">
-        <div class="d-flex align-items-center gap-4">
-          <img src="<%= user.profileImageURL || '/uploads/defaultProfileImage.jpg' %>" alt="Profile Image" class="rounded-circle" width="120" height="120" style="object-fit: cover;" />
-          <div>
-            <h3><%= user.fullName %></h3>
-            <p><strong>Email:</strong> <%= user.email %></p>
-          </div>
+      <div class="card" style="width: 18rem;">
+        <img src="image" class="card-img-top rounded-circle" width="120" height="120" style="object-fit: cover;" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= user.fullName %></h5>
+          <p class="card-text"><strong>Email:</strong> <%= user.email %></p>
         </div>
       </div>
+
+
     </div>
 
     <%- include('./partials/footer') %>
