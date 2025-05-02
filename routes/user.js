@@ -3,7 +3,7 @@ const User = require("../models/user");
 const multer = require("multer");
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const { cloudinary } = require('../utils/cloudinary');
-const requireUser = require("../middlewares/requireUser");
+const requireUser = require("../middleware/requireUser");
 
 const router = Router();
 
