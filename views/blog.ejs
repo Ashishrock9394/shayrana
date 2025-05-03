@@ -59,15 +59,15 @@
 
       <!-- Add Comment Form -->
       <% if (locals.user) { %>
-        <form action="/blog/comment/<%= blog._id %>" method="post">
+        <form class="mb-3" action="/blog/comment/<%= blog._id %>" method="post">
           <div class="mb-3">
             <textarea
-              class="form-control bg-dark text-white border-secondary"
+              class="form-control bg-dark text-white border-secondary text-white"
               name="comment"
               rows="3"
               placeholder="Add your comment..."
             ></textarea>
-            <button class="btn btn-sm btn-primary mt-2 mb-3" type="submit">Add Comment</button>
+            <button class="btn btn-sm btn-primary mt-2" type="submit">Add Comment</button>
           </div>
         </form>
       <% } %>
