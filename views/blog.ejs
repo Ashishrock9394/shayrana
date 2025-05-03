@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      .white-placeholder::placeholder {
+        color: #ffffff !important;
+        opacity: 1;
+      }
+    </style>
     <%- include('./partials/header') %>
   </head>
   <body class="searchable" style="background-color: #1f242d; color: #fff;">
@@ -59,17 +65,20 @@
 
       <!-- Add Comment Form -->
       <% if (locals.user) { %>
-        <form class="mb-3" action="/blog/comment/<%= blog._id %>" method="post">
+        <form action="/blog/comment/<%= blog._id %>" method="post">
           <div class="mb-3">
             <textarea
-              class="form-control bg-dark text-white border-secondary text-white"
+              class="form-control bg-dark text-white border-secondary white-placeholder"
               name="comment"
               rows="3"
               placeholder="Add your comment..."
+              required
             ></textarea>
-            <button class="btn btn-sm btn-primary mt-2" type="submit">Add Comment</button>
           </div>
-        </form>
+          <div class="text-end">
+            <button class="btn btn-sm btn-primary mt-2 mb-3" type="submit">Add Comment</button>
+          </div>
+        </form>        
       <% } %>
     </div>
 
