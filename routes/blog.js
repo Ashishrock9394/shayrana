@@ -103,6 +103,21 @@ router.post('/edit/:id', upload.single('coverImage'), async (req, res) => {
   res.redirect(`/blog/${blog._id}`);
 });
 
+// POST Delete Blog
+
+router.post('/delete/:id', async (req, res) => {
+  const blog = await Blog.findById(req.params.id);
+  if (!blog) return res.status(404).send('Blog not found');
+
+  // Only author can access
+  if (blog.createdBy.toString() !== req.user._id.toString()) {
+    return res.status(403).send('Unauthorized');
+  }
+
+  await blog.deleteOne();
+  res.redirect('/');
+});
+
 
 
 module.exports = router;
