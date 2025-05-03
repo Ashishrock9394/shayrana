@@ -56,9 +56,11 @@
           </div>
         <% }) %>
       </div>
+    </div>
 
       <!-- Add Comment Form -->
       <% if (locals.user) { %>
+      <div class="mb-3">
         <form action="/blog/comment/<%= blog._id %>" method="post">
           <div class="mb-3">
             <textarea
