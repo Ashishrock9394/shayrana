@@ -65,7 +65,7 @@
 
       <!-- Add Comment Form -->
       <% if (locals.user) { %>
-        <form action="/blog/comment/<%= blog._id %>" method="post">
+        <form action="/blog/comment/<%= blog._id %>" method="post" class="mx-auto" style="max-width: 600px;">
           <div class="mb-3">
             <textarea
               class="form-control bg-dark text-white border-secondary white-placeholder"
@@ -75,8 +75,8 @@
               required
             ></textarea>
           </div>
-          <div class="text-end">
-            <button class="btn btn-sm btn-primary mt-2 mb-3" type="submit">Add Comment</button>
+          <div>
+            <button class="btn btn-sm btn-primary p-2 mt-2 mb-3" type="submit">Add Comment</button>
           </div>
         </form>        
       <% } %>
