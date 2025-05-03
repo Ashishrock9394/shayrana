@@ -51,9 +51,9 @@
       <h3 class="text-white mb-4">Comments (<%= comments.length %>)</h3>
 
       <!-- Comment List -->
-      <div class="mb-4">
+      <div class="mb-2">
         <% comments.forEach(comment => { %>
-          <div class="d-flex align-items-start gap-3 p-3 mb-3">
+          <div class="d-flex align-items-start gap-3 p-2 mb-2">
             <img src="<%= comment.createdBy.profileImageURL %>" class="rounded-circle border border-light" width="40" height="40" style="object-fit: cover;" />
             <div>
               <h6 class="mb-1 text-info"><%= comment.createdBy.fullName %></h6>
@@ -66,7 +66,7 @@
       <!-- Add Comment Form -->
       <% if (locals.user) { %>
         <form action="/blog/comment/<%= blog._id %>" method="post" style="max-width: 600px;">
-          <div class="mb-3">
+          <div>
             <textarea
               class="form-control bg-dark text-white border-secondary white-placeholder"
               name="comment"
