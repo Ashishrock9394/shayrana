@@ -56,11 +56,9 @@
           </div>
         <% }) %>
       </div>
-    </div>
 
       <!-- Add Comment Form -->
       <% if (locals.user) { %>
-      <div class="mb-3 p-3">
         <form action="/blog/comment/<%= blog._id %>" method="post">
           <div class="mb-3">
             <textarea
@@ -69,11 +67,11 @@
               rows="3"
               placeholder="Add your comment..."
             ></textarea>
-            <button class="btn btn-sm btn-primary mt-2" type="submit">Add Comment</button>
+            <button class="btn btn-sm btn-primary mt-2 mb-3" type="submit">Add Comment</button>
           </div>
         </form>
-      </div>
       <% } %>
+    </div>
 
     <%- include('./partials/footer') %>
     <%- include('./partials/scripts') %>
