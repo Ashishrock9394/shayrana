@@ -8,10 +8,12 @@
     <%- include('./partials/nav') %>
 
     <div class="container mt-4">
-      <form action="/user/signin" method="post">
+      <h1 class="text-center" style="color: #0ef;">Login</h1>
+      <div class="container mt-4 frm" style="max-width: 600px; padding: 20px; box-sizing: border-box; box-shadow: 0 4px 8px 0 #0ef, 0 6px 20px 0 #0ef;"></div>
+        <form action="/user/signin" method="post">
 
         <div class="form-group mb-3">
-          <label for="exampleInputEmail1">Email address</label>
+          <label for="exampleInputEmail1" style="color: #0ef;">Email address</label>
           <input
             type="email"
             name="email"
@@ -22,7 +24,7 @@
           />
         </div>
         <div class="form-group mb-3">
-          <label for="exampleInputPassword1">Password</label>
+          <label for="exampleInputPassword1" style="color: #0ef;">Password</label>
           <input
             type="password"
             name="password"
@@ -31,8 +33,11 @@
             placeholder="Password"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+      </div>
       </form>
+      </div>
     </div>
 
     
